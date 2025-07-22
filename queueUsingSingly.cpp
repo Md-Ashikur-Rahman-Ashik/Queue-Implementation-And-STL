@@ -17,14 +17,14 @@ public:
 class myQueue
 {
 public:
-    Node *head;
-    Node *tail;
+    Node *head = NULL;
+    Node *tail = NULL;
     int countSize = 0;
 
-    void push(int integerValue)
+    void push(int inputValue)
     {
         countSize++;
-        Node *newNode = new Node(integerValue);
+        Node *newNode = new Node(inputValue);
         if (head == NULL)
         {
             head = newNode;
@@ -62,26 +62,12 @@ public:
 
     int front()
     {
-        if (head == NULL)
-        {
-            return;
-        }
-        else
-        {
-            return head->integerValue;
-        }
+        return head->integerValue;
     }
 
     int back()
     {
-        if (tail == NULL)
-        {
-            return;
-        }
-        else
-        {
-            return tail->integerValue;
-        }
+        return tail->integerValue;
     }
 
     int size()
@@ -97,5 +83,23 @@ public:
 
 int main()
 {
+    myQueue testQueue;
+
+    int queueSize;
+    cin >> queueSize;
+
+    for (int i = 0; i < queueSize; i++)
+    {
+        int inputValue;
+        cin >> inputValue;
+        testQueue.push(inputValue);
+    }
+
+    while (!testQueue.empty())
+    {
+        cout << testQueue.front() << endl;
+        testQueue.pop();
+    }
+
     return 0;
 }
